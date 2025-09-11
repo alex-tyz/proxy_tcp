@@ -1,0 +1,30 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.6.RELEASE'
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'asl.tcpproxy'
+version = '2.0.20190712'
+sourceCompatibility = '1.8'
+
+springBoot {
+    buildInfo()
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
+	implementation 'org.apache.mina:mina-core:2.0.20'
+	
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
