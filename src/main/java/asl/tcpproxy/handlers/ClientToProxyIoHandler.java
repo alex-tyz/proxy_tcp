@@ -32,7 +32,6 @@ public class ClientToProxyIoHandler extends AbstractProxyIoHandler {
 	@Override
 	public void sessionOpened(final IoSession session) throws Exception {
 
-		// System.out.println("Connecting...");
 		connector.connect(remoteAddress).addListener(new IoFutureListener<ConnectFuture>() {
 			public void operationComplete(ConnectFuture future) {
 				try {
@@ -51,7 +50,6 @@ public class ClientToProxyIoHandler extends AbstractProxyIoHandler {
 					}
 
 				} catch (RuntimeIoException e) {
-					// Connect failed
 					if (log.isErrorEnabled()) {
 						log.error("Connect failed for " + OTHER_IO_SESSION, e);
 					}

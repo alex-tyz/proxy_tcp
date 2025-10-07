@@ -7,9 +7,7 @@ import org.apache.mina.core.session.IoSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public abstract class AbstractProxyIoHandler extends IoHandlerAdapter {
-	//private static final Charset CHARSET = Charset.forName("iso8859-1");
 	public static final String OTHER_IO_SESSION = AbstractProxyIoHandler.class.getName() + ".OtherIoSession";
 
 	private final static Logger log = LoggerFactory.getLogger(AbstractProxyIoHandler.class);
@@ -42,22 +40,7 @@ public abstract class AbstractProxyIoHandler extends IoHandlerAdapter {
 		wb.flip();
 		((IoSession) session.getAttribute(OTHER_IO_SESSION)).write(wb);
 		rb.reset();
-
-//		if (log.isDebugEnabled()) {
-//			log.debug(rb.getString(CHARSET.newDecoder()));
-//		}
 	}
-
-//	@Override
-//	public void messageSent(IoSession session, Object message) throws Exception {
-//		super.messageSent(session, message);
-//
-//		if (log.isDebugEnabled()) {
-//			IoBuffer rb = (IoBuffer) message;
-//			log.debug("Message sent for " + session.getAttribute(OTHER_IO_SESSION).toString());
-//			log.debug(rb.getString(CHARSET.newDecoder()));
-//		}
-//	}
 
 	@Override
 	public void exceptionCaught(IoSession session, Throwable cause) throws Exception {
@@ -70,12 +53,4 @@ public abstract class AbstractProxyIoHandler extends IoHandlerAdapter {
 		super.exceptionCaught(session, cause);
 
 	}
-
-//	@Override
-//	public void inputClosed(IoSession session) throws Exception {
-//		if (log.isDebugEnabled()) {
-//			log.debug(String.format("Input closed for session: %s", session.toString()));
-//		}
-//		super.inputClosed(session);
-//	}
 }
